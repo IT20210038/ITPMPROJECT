@@ -2,9 +2,16 @@ const router = require("express").Router();
 const EventsManage = require("../models/EventsManage");
 const { findById } = require("../models/EventsManage");
 
-router.get("/test",async (req, res) => {
-    console.log("adasd", await res.json())
-})
+//router.get("/test",async (req, res) => {
+//    console.log("adasd", await res.json())
+//})
+
+router.route('/').get((req, res) => {
+  EventsManage.find()
+    .then(EventsManage => res.json(EventsManage))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 router.route('/add').post((req, res) => {
   const EventId = req.body.EventId;

@@ -1,14 +1,13 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import './AddEvent.css';
+//import './EditChnel.css';
 
-export default class AddEvent extends Component {
+export default class EditEvent extends Component {
     constructor(props) {
       super(props);
       
-      this.onChangeEventId = this.onChangeEventId.bind(this);
       this.onChangeEventType = this.onChangeEventType.bind(this);
       this.onChangeEventPlace = this.onChangeEventPlace.bind(this);
       this.onChangeNumberOfguests= this.onChangeNumberOfguests.bind(this);
@@ -17,7 +16,6 @@ export default class AddEvent extends Component {
       this.onSubmit = this.onSubmit.bind(this);
       
       this.state = {
-        EventId:'',
         EventType: '',
         EventPlace: '',
         NumberOfguests: '',
@@ -26,19 +24,29 @@ export default class AddEvent extends Component {
       }
     }
   
-    onChangeEventId(e) {
-      this.setState({
-          EventId: e.target.value
-      });
-    }
+    componentDidMount() {
+        axios.get('http://localhost:8070/events/get/' + this.props.match.params.id)
+          .then(response => {
+            this.setState({
+              EventType: response.data.EventType,
+              EventPlace: response.data.EventPlace,
+              NumberOfguests: response.data.NumberOfguests,
+              date: new Date(response.data.date),
+              EventFee: response.data.EventFee,
+            })
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
 
-    onChangeEventType(e) {
-        this.setState({
-            EventType: e.target.value
-        });
-    }
+      onChangeEventType(e) {
+          this.setState({
+              EventType: e.target.value
+          });
+      }
 
-    onChangeEventPlace(e) {
+      onChangeEventPlace(e) {
         this.setState({
             EventPlace: e.target.value
         });
@@ -66,7 +74,6 @@ export default class AddEvent extends Component {
         e.preventDefault();
     
     const EventsManage = {
-            EventId: this.state.EventId,
             EventType: this.state.EventType,
             EventPlace: this.state.EventPlace,
             NumberOfguests: this.state.NumberOfguests,
@@ -75,30 +82,18 @@ export default class AddEvent extends Component {
     }
   
     console.log(EventsManage);
+    axios.post('http://localhost:8070/events/update',this.props.match.params.id, EventsManage)
+    .then(res => console.log(res.data));
 
-    axios.post('http://localhost:8070/events/add', EventsManage)
-        .then(res => console.log(res.data));
+alert("Event Updated!");
+window.location = '/viewEvent';
+}
 
-    alert("New Event added!");
-    window.location = '/viewEvent';
-  }
-
-  render() {
+render() {
     return (
-    <div className="AddEventpg"><br/>
-      <form onSubmit={this.onSubmit} className="container" id="Addform">
-      <h4>ADD NEW EVENT</h4> 
-      <div className="form-group" > 
-          <label>Event Id: </label>
-          <input type="text"
-              required
-              name="CNo"
-              placeholder="Enter event id"
-              className="form-control"
-              value={this.state.EventId}
-              onChange={this.onChangeEventId}
-              /> 
-    </div><br/>
+    <div className="UpdateEventpg"><br/>
+      <form onSubmit={this.onSubmit} className="container" id="Updateform">
+      <h4>UPDATE EVENT</h4> 
       <div className="form-group"> 
           <label>Event Type: </label>
           <input type="text"
@@ -156,7 +151,7 @@ export default class AddEvent extends Component {
 
         <div className="form-group">
         <div class="col text-center">
-          <input type="submit" value="ADD Event" className="btn btn-primary" id="b1" />
+          <input type="submit" value="Update Event" className="btn btn-primary" id="b1" />
           </div>
         </div><br/>
        

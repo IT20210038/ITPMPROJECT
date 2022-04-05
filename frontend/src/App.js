@@ -1,7 +1,9 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import addEvent from "./component/EventManagement/AddEvent";
+import AddEvent from "./component/EventManagement/AddEvent";
+import EditEvent from "./component/EventManagement/EditEvent";
+import ViewEvent from "./component/EventManagement/viewEvent";
 //import events from "./component/EventManagement/AddEvent";
 //import AddRooms from "./component/RoomManagement/AddRooms";
 //import AddEmployees from "./component/StaffManagement/AddEmployees";
@@ -11,7 +13,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Route path="/addEvent" component={addEvent} />
+        <Route path="/" exact component={AddEvent} />
+        <Route path="/editEvent/:id" component={EditEvent} />
+        <Route path="/viewEvent" component={ViewEvent} />
       </div>
     </Router>
   );
