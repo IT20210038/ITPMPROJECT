@@ -1,0 +1,78 @@
+h2{
+    text-align: center;
+    font-weight:bold;
+    color:#000080;
+    font-size: 3rem;
+}
+
+h2{
+    text-align: center;
+    font-weight:bold;
+    color:#e41732;
+    font-size: 3rem;
+}
+
+#ba3 {
+    background-color: #008000; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
+#b4{
+    color: #FF0000;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+  
+table ,tr,td{
+    border: 1px solid #ddd;
+    text-align: left;
+}
+  
+td{
+    padding:15px;
+}
+  
+tr:nth-child(even)
+{
+   background-color: #FAEBD7;
+}
+   
+tr:nth-child(odd)
+{
+   background-color: #FFF8DC;
+}
+
+th:nth-child(odd){
+    background-color:#f2f2f2;
+}
+
+th:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: blueviolet;
+}
+
+.viewEventpg{
+    background-image: url('https://www.revelryeventdesigners.com/blog/wp-content/uploads/2011/05/0238.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}      

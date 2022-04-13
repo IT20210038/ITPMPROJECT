@@ -80,7 +80,7 @@ export default class AddEvent extends Component {
         .then(res => console.log(res.data));
 
     alert("New Event added!");
-    window.location = '/viewEvent';
+    window.location = '/';
   }
 
   render() {
@@ -100,26 +100,32 @@ export default class AddEvent extends Component {
               /> 
     </div><br/>
       <div className="form-group"> 
-          <label>Event Type: </label>
-          <input type="text"
-              required
-              name="pName"
-              placeholder="Enter event type"
-              className="form-control"
-              value={this.state.EventType}
-              onChange={this.onChangeEventType}
-              />
+          <label>Event Type : <br /> </label>
+          <select className="eventMan" value={this.state.EventType}
+                    onChange={this.onChangeEventType}>
+                    <option selected disabled value="">Select</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday Party">Birthday Party</option>
+                    <option value="Anniversary">Anniversary</option>
+                    <option value="Engagement">Engagement</option>
+                    <option value="Business party">Business party</option>
+          </select>
         </div><br/>
         <div className="form-group"> 
-          <label>Event Place: </label>
-          <input  type="text"
-              required
-              name="EventP"
-              placeholder="Enter Event place"
-              className="form-control"
-              value={this.state.EventPlace}
-              onChange={this.onChangeEventPlace}
-              />
+          <label>Event Place : </label>
+          <select className="eventMain" value={this.state.EventPlace}
+                    onChange={this.onChangeEventPlace}>
+                    <option selected disabled value="">Select</option>
+                    <option value="Shangrila,Colombo">Shangrila,Colombo</option>
+                    <option value="Kingsbury,Colombo">Kingsbury,Colombo</option>
+                    <option value="Avenra Garden,Negombo">Avenra Garden,Negombo</option>
+                    <option value="Hilton,Colombo">Hilton,Colombo</option>
+                    <option value="Amari Galle,Galle">Amari Galle,Galle</option>
+                    <option value="Petti-Petti,Mirissa">Petti-Petti,Mirissa</option>
+                    <option value="Araliya Hotel,Unawatuna">Araliya Hotel,Unawatuna</option>
+                    <option value="98-acress Resort">98-acress Resort</option>
+                    <option value="Marriot,Weligama">Marriot,Weligama</option>
+            </select>
         </div><br/>
         <div className="form-group">
           <label>Number Of Guests: </label>
