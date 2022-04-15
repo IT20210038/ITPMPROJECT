@@ -35,6 +35,16 @@ connection.once("open", () => {
  const eventsRouter = require("./routes/EventsManage");
  app.use("/events", eventsRouter);
 
+ const employeeRouter = require('./routes/employee');
+ app.use('/employee', employeeRouter);
+
+ const servicesRouter = require("./routes/ServicesManage");
+ app.use("/services", servicesRouter);
+
+ const paymentsRouter = require("./routes/PaymentsManage");
+ app.use("/payments", paymentsRouter);
+ 
+
 //running port 8070
 app.listen(PORT, () => {
   console.log(`Server is up and running on port no: ${PORT}`);

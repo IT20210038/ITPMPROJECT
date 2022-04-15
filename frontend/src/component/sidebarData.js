@@ -14,25 +14,25 @@ export const SidebarData = [
     {
         title: 'Events',
         path: '/manageEvent',
-        icon: <ImIcons.ImManWoman />,
+        icon: <FaIcons.FaCalendarPlus/>,
         cName: 'nav-text'
     },
     {
         title: 'Employees',
         path: '/manageChannel',
-        icon: <FaIcons.FaCalendarPlus />,
+        icon: <ImIcons.ImUsers />,
         cName: 'nav-text'
     },
     {
         title: 'Services',
         path: '/manageStaff',
-        icon: <ImIcons.ImUsers />,
+        icon: <FaIcons.FaXRay />,
         cName: 'nav-text'
     },
     {
         title: 'Payments',
         path: '/manageLab',
-        icon: <ImIcons.ImLab />,
+        icon: <AiIcons.AiOutlineDollarCircle />,
         cName: 'nav-text'
     },
     

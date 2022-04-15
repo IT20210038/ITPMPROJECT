@@ -3,9 +3,11 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import './AddEvent.css';
+import validateInfo from './validateInfo';
 
 export default class AddEvent extends Component {
-    constructor(props) {
+  
+  constructor(props) {
       super(props);
       
       this.onChangeEventId = this.onChangeEventId.bind(this);
@@ -64,6 +66,7 @@ export default class AddEvent extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+        
     
     const EventsManage = {
             EventId: this.state.EventId,
@@ -80,10 +83,13 @@ export default class AddEvent extends Component {
         .then(res => console.log(res.data));
 
     alert("New Event added!");
-    window.location = '/';
+    window.location = '/manageEvent';
   }
 
-  render() {
+  
+  
+    render() {
+   
     return (
     <div className="AddEventpg"><br/>
       <form onSubmit={this.onSubmit} className="container" id="Addform">
@@ -94,10 +100,12 @@ export default class AddEvent extends Component {
               required
               name="CNo"
               placeholder="Enter event id"
+              //errorMessage="Event ID should be 4 characters and shouldn't include any special characters."
               className="form-control"
               value={this.state.EventId}
               onChange={this.onChangeEventId}
               /> 
+              
     </div><br/>
       <div className="form-group"> 
           <label>Event Type : <br /> </label>
@@ -130,13 +138,15 @@ export default class AddEvent extends Component {
         <div className="form-group">
           <label>Number Of Guests: </label>
           <input 
-              type="text" 
+              type="Number" 
               className="form-control"
               name="Dname"
               placeholder="Enter Number of guests"
+              //errorMessage="It should be only numbers"
               value={this.state.NumberOfguests}
               onChange={this.onChangeNumberOfguests}
           />
+          
         </div><br/>
         <div className="form-group">
           <label>date: </label>
@@ -158,8 +168,9 @@ export default class AddEvent extends Component {
               value={this.state.EventFee}
               onChange={this.onChangeEventFee}
               />
+              
         </div><br/>
-
+       
         <div className="form-group">
         <div class="col text-center">
           <input type="submit" value="ADD Event" className="btn btn-primary" id="b1" />
@@ -171,4 +182,3 @@ export default class AddEvent extends Component {
        )
     }
   }
-  

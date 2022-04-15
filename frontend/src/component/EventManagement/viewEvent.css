@@ -8,7 +8,7 @@ h2{
 h2{
     text-align: center;
     font-weight:bold;
-    color:#e41732;
+    color:#7717e4;
     font-size: 3rem;
 }
 
@@ -76,3 +76,15 @@ th {
     background-repeat: no-repeat;
     background-size: cover;
 }      
+
+.searchEventBtn{
+    background-color: #eccc3a; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
