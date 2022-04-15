@@ -94,7 +94,7 @@ render() {
     return (
     <div className="EditEvent"><br/>
       <form onSubmit={this.onSubmit} className="container" id="Editform">
-      <h4>UPDATE EVENT</h4> 
+      <h4 className='upform'>UPDATE EVENT</h4> 
       <div className="form-group"> 
           <label>Event Type: </label>
           <select className="eventMan" value={this.state.EventType}

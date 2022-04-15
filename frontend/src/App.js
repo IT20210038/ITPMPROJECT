@@ -8,15 +8,15 @@ import EventReport from "./component/EventManagement/EventReport";
 import manageEvent from "./component/EventServices/manageEvent";
 import Navbar from "./component/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./component/Dashboard";
+import Home from "./component/home";
 
 function App() {
   return (
     <Router>
       <div>
       <Navbar/>
-      <br/>
-        <Route exact path="/" component={Dashboard} />
+     <br/>
+        <Route exact path="/" component={Home} />
         <Route path="/addEvent" component={AddEvent} />
         <Route path="/editEvent/:id" component={EditEvent} />
         <Route path="/viewEvent" component={ViewEvent} />

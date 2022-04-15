@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import './AddEvent.css';
-import validateInfo from './validateInfo';
+
 
 export default class AddEvent extends Component {
   
@@ -93,7 +93,7 @@ export default class AddEvent extends Component {
     return (
     <div className="AddEventpg"><br/>
       <form onSubmit={this.onSubmit} className="container" id="Addform">
-      <h4>ADD NEW EVENT</h4> 
+      <h4 className='add'>ADD NEW EVENT</h4> 
       <div className="form-group" > 
           <label>Event Id: </label>
           <input type="text"
@@ -170,7 +170,7 @@ export default class AddEvent extends Component {
               />
               
         </div><br/>
-       
+       <button type='reset'>Reset</button>
         <div className="form-group">
         <div class="col text-center">
           <input type="submit" value="ADD Event" className="btn btn-primary" id="b1" />

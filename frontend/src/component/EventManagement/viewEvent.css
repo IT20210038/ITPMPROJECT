@@ -5,10 +5,10 @@ h2{
     font-size: 3rem;
 }
 
-h2{
+.viewapp{
     text-align: center;
     font-weight:bold;
-    color:#7717e4;
+    color:#e41795;
     font-size: 3rem;
 }
 
@@ -71,7 +71,7 @@ th {
 }
 
 .viewEventpg{
-    background-image: url('https://www.revelryeventdesigners.com/blog/wp-content/uploads/2011/05/0238.jpg');
+    background-image: url('https://hips.hearstapps.com/clv.h-cdn.co/assets/17/15/outdoor-wedding-ideas-floral-garland-centerpiece-photo-viainspired-by-this-dan-stewart-photography-planning-smitten-events-venue-menonaqua-inn.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
