@@ -1,9 +1,8 @@
-import React, {Component } from 'react';
+import React, {Component, useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import './AddEvent.css';
-
 
 export default class AddEvent extends Component {
   
@@ -24,10 +23,35 @@ export default class AddEvent extends Component {
         EventPlace: '',
         NumberOfguests: '',
         date: new Date(),
-        EventFee:''
-      }
+        EventFee:'',
+       }
     }
   
+    validate = () =>{
+      let EventIdError="";
+      let NumberOfguestsError="";
+      let EventFeeError="";
+      
+      if(!this.state.EventFee.includes("0")){
+        EventFeeError = "EventFee cannot be a character.It must be a number"
+      }
+
+      if(!this.state.NumberOfguests.includes("0")){
+        NumberOfguestsError = "Number of guests cannot be a character.It must be a number"
+      }
+
+      if(!this.state.EventId.includes("E")){
+        EventIdError = "Invalid EventID";
+      }
+
+      if(EventIdError ||NumberOfguestsError|| EventFeeError){
+        this.setState({ EventIdError ,NumberOfguestsError, EventFeeError});
+        return false;
+      }
+      return true;
+    };
+
+
     onChangeEventId(e) {
       this.setState({
           EventId: e.target.value
@@ -64,9 +88,14 @@ export default class AddEvent extends Component {
         });
     }
 
+    
+
     onSubmit(e) {
         e.preventDefault();
-        
+        const isValid = this.validate();
+        if(isValid){
+        console.log(this.state);
+      
     
     const EventsManage = {
             EventId: this.state.EventId,
@@ -84,8 +113,9 @@ export default class AddEvent extends Component {
 
     alert("New Event added!");
     window.location = '/manageEvent';
-  }
-
+  }}
+  
+  
   
   
     render() {
@@ -107,6 +137,7 @@ export default class AddEvent extends Component {
               /> 
               
     </div><br/>
+    <div style={{fontSize:16, color:"red"}}>{this.state.EventIdError}</div>
       <div className="form-group"> 
           <label>Event Type : <br /> </label>
           <select className="eventMan" value={this.state.EventType}
@@ -138,7 +169,7 @@ export default class AddEvent extends Component {
         <div className="form-group">
           <label>Number Of Guests: </label>
           <input 
-              type="Number" 
+              type="text" 
               className="form-control"
               name="Dname"
               placeholder="Enter Number of guests"
@@ -148,6 +179,7 @@ export default class AddEvent extends Component {
           />
           
         </div><br/>
+        <div style={{fontSize:16, color:"red"}}>{this.state.NumberOfguestsError}</div>
         <div className="form-group">
           <label>date: </label>
           <div>
@@ -164,13 +196,15 @@ export default class AddEvent extends Component {
               required
               name="dfee"
               className="form-control"
+              //pattern="[0-1000000]*"
               placeholder="Enter event fee"
               value={this.state.EventFee}
               onChange={this.onChangeEventFee}
               />
-              
+             
         </div><br/>
-       <button type='reset'>Reset</button>
+        <div style={{fontSize:16, color:"red"}}>{this.state.EventFeeError}</div>
+        <input type="reset" value="RESET" className="btn btn-primary" id="b1" />
         <div className="form-group">
         <div class="col text-center">
           <input type="submit" value="ADD Event" className="btn btn-primary" id="b1" />
